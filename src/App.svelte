@@ -1,5 +1,5 @@
 <script>
-	
+	import api from '../lib/api-instance'
 </script>
 
 <main>
