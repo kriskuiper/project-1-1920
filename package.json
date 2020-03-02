@@ -4,8 +4,7 @@
   "scripts": {
     "build": "rollup --config",
     "dev": "rollup --config --watch",
-    "now:deploy": "now",
-    "now:dev": "now dev --listen 3031"
+    "now:deploy": "now"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
