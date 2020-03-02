@@ -3,3 +3,6 @@ node_modules
 
 .DS_Store
 .env
+
+# Add build to gitignore
+public/build
