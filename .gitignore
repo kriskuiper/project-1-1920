@@ -6,3 +6,4 @@ node_modules
 
 # Add build to gitignore
 public/build
+.now
