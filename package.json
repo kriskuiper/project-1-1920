@@ -2,8 +2,9 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
+    "start": "sirv public",
     "build": "rollup --config",
-    "dev": "rollup --config --watch",
+    "dev": "rollup -c -w",
     "now:deploy": "now",
     "now:dev": "now dev --listen 3031"
   },
