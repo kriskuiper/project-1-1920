@@ -57,7 +57,9 @@
         <button
             on:click={enableSpeech}
             disabled={isListening}
-        >{ isListening ? 'Luisteren...' : 'Luister' }</button>
+        >
+            { isListening ? 'Luisteren...' : 'Neem op'}
+        </button>
     </div>
 </div>
 
@@ -72,5 +74,7 @@
 
     input {
         flex-grow: 1;
+        padding: 1rem;
+        margin-right: 1rem;
     }
 </style>
