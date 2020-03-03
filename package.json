@@ -6,7 +6,7 @@
     "build": "rollup --config",
     "dev": "rollup -c -w",
     "now:deploy": "now",
-    "now:dev": "now dev --listen 3031"
+    "now:dev": "now dev --listen 5001"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
