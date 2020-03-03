@@ -5,21 +5,28 @@
 	import Book from './components/Book.svelte'
 	import SpeechInput from './components/SpeechInput.svelte'
 
-	let userAnswer = 'start'
+	/*
+		TODO: create a stepped flow where every step expects
+		different responses to accomodate more complicated flows.
+
+		If response is not known we can then show the unknown response,
+		something we're not able to do now.
+	*/
+	let step = 'start'
 	let userTranscript = ''
 
 	const handleResult = (value, transcript) => {
-		userAnswer = value
+		step = value
 		userTranscript = transcript.trim()
 	}
 </script>
 
 <main>
-	<h1>{questions[userAnswer]}</h1>
-	<p>{placeholders[userAnswer]}</p>
+	<h1>{questions[step]}</h1>
+	<p>{placeholders[step]}</p>
 
 	<SpeechInput
-		placeholder={placeholders[userAnswer]}
+		placeholder={placeholders[step]}
 		onResult={handleResult}
 	/>
 
