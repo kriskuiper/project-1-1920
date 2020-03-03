@@ -1,6 +1,5 @@
 <script>
     import recognition from '../../lib/recognition-instance'
-    import containsWord from '../../lib/contains-word'
 
     export let placeholder
     export let onResult
