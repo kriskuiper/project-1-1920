@@ -12,10 +12,10 @@
 	}
 
 	const questions = {
-		start: 'Hey! Ik ben de OBA werkstukbuddy, heb je zin in je werkstuk?',
+		start: 'Heb je zin in je werkstuk?',
 		nee: 'Ugh, balen! Waar gaat je werkstuk over?',
-		ja: 'Cool! Ik heb er net zoveel zin in als jij. Waar gaat je werkstuk over?',
-		searchbooks: 'Okay!',
+		ja: 'Awesome! Laten we snel beginnen. Waar gaat je werkstuk over?',
+		searchbooks: 'Cool! Ik ga meteen voor je op zoek',
 		unknown: 'Rustig aan, zo slim ben ik ook weer niet'
 	}
 
@@ -23,7 +23,7 @@
 		start: 'Ja of nee?',
 		nee: 'Zeg in één woord waar je werkstuk over gaat',
 		ja: 'Zeg in één woord waar je werkstuk over gaat',
-		searchbooks: 'Ik ga zoeken naar resultaten',
+		searchbooks: 'Dit kan even duren...',
 		unknown: 'Ik vergeet ook nog eens alles, waar ging je werkstuk ook alweer over?'
 	}
 </script>
@@ -53,8 +53,14 @@
 </main>
 
 <style>
-	h1, p {
-		text-align: center;
+	h1 { font-size: 1.85rem; }
+
+	@media (min-width: 330px) {
+		h1 { font-size: 2.25rem }
+	}
+
+	@media (min-width: 987px) {
+		h1 { font-size: 3rem }
 	}
 
 	p {
