@@ -1,29 +1,24 @@
 <script>
     import recognition from '../../lib/recognition-instance'
 
-    export let placeholder
     export let onResult
+    export let placeholder
 
     let hasResult = false
     let isListening = false
     let userAnswer = ''
 
-    const enableSpeech = () => {
+    const startRecognition = () => {
         isListening = true
         recognition.start()
     }
 
-    const disableSpeech = () => {
+    const stopRecognition = () => {
         isListening = false
         recognition.stop()
     }
 
-    recognition.onspeechend = () => {
-        disableSpeech()
-    }
-
-    recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript
+    const handleRecognitionResult = (transcript) => {
         const containsWord = (value) => {
             return transcript.includes(value)
         }
@@ -43,6 +38,16 @@
             onResult(userAnswer, transcript)
         }
     }
+
+    recognition.onspeechend = () => {
+        stopRecognition()
+    }
+
+    recognition.onresult = (event) => {
+        const { transcript } = event.results[0][0]
+        
+        handleRecognitionResult(transcript)
+    }
 </script>
 
 <div>
@@ -55,7 +60,7 @@
             readonly
         >
         <button
-            on:click={enableSpeech}
+            on:click={startRecognition}
             disabled={isListening}
         >
             { isListening ? 'Luisteren...' : 'Neem op'}
@@ -65,7 +70,8 @@
 
 <style>
     label {
-        display: none;
+        position: absolute;
+        transform: translateX(-9999px);
     }
 
     div > div {
