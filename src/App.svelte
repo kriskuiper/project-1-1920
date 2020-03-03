@@ -31,6 +31,7 @@
 <main>
 	<h1>{questions[userAnswer]}</h1>
 	<p>{placeholders[userAnswer]}</p>
+
 	<SpeechInput
 		placeholder={placeholders[userAnswer]}
 		onResult={handleResult}
@@ -41,8 +42,8 @@
 			<p>Op zoek naar boeken met "{userTranscript}"...</p>
 
 			{:then books}
-				<p>{books.length} boeken gevonden met "{userTranscript}"</p>
-				{#each books as book}
+				<p>{books.total} boeken gevonden met "{userTranscript}"</p>
+				{#each books.results as book}
 					<Book book={book} />
 				{/each}
 			{:catch}
@@ -52,5 +53,11 @@
 </main>
 
 <style>
-	
+	h1, p {
+		text-align: center;
+	}
+
+	p {
+		font-size: 1.225rem;
+	}
 </style>
