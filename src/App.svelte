@@ -5,17 +5,8 @@
 	import Book from './components/Book.svelte'
 	import SpeechInput from './components/SpeechInput.svelte'
 
-	/*
-		TODO: create a stepped flow where every step expects
-		different responses to accomodate more complicated flows.
-
-		If response is not known we can then show the unknown response,
-		something we're not able to do now.
-	*/
-
 	let step = 'start'
 	let userAnswer = ''
-	let userTranscript = ''
 
 	const isPossibleAnswer = (userAnswer) => {
 		const { possibleAnswers } = userSteps[step]
@@ -56,10 +47,7 @@
 	<h1>{userSteps[step].feedback}</h1>
 	<p>{userSteps[step].subtitle}</p>
 
-	<SpeechInput
-		transcript={userAnswer}
-		on:result={changeSteps}
-	/>
+	<SpeechInput transcript={userAnswer} on:result={changeSteps} />
 
 	{#if step === 'searchbooks'}
 		{#await api.search(userAnswer)}
