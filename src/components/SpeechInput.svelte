@@ -3,7 +3,7 @@
     import recognition from '../../lib/recognition-instance'
     import RecordButton from './RecordButton.svelte'
 
-    export let transcript = 'Klik op "Neem op" en let me know'
+    export let transcript = 'Klik op het microfoontje'
 
     let hasResult = false
     let isListening = false
