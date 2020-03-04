@@ -1,6 +1,6 @@
 <script>
 	import api from '../lib/api-instance'
-	import { questions, placeholders } from './voice-config'
+	import userSteps from './user-steps'
 
 	import Book from './components/Book.svelte'
 	import SpeechInput from './components/SpeechInput.svelte'
@@ -12,35 +12,66 @@
 		If response is not known we can then show the unknown response,
 		something we're not able to do now.
 	*/
+
 	let step = 'start'
+	let userAnswer = ''
 	let userTranscript = ''
 
-	const handleResult = (value, transcript) => {
-		step = value
-		userTranscript = transcript.trim()
+	const isPossibleAnswer = (userAnswer) => {
+		const { possibleAnswers } = userSteps[step]
+		const allAnswersPossible = possibleAnswers.some(answer => answer === 'all')
+
+		if (allAnswersPossible) {
+			return true
+		}
+
+		return possibleAnswers.find(answer => answer === userAnswer)
+	}
+
+	const changeSteps = (value) => {
+		let { detail } = value
+
+		const containsWord = (value) => {
+			return detail.includes(value)
+		}
+
+		if (containsWord('ja')) {
+			userAnswer = 'ja'
+		} else if (containsWord('nee')) {
+			userAnswer = 'nee'
+		} else {
+			userAnswer = detail
+		}
+
+		if (isPossibleAnswer(userAnswer)) {
+			step = userSteps[step].nextSteps.find(nextStep => nextStep === userAnswer)
+				|| userSteps[step].nextSteps[0]
+		} else {
+			step = 'unknown'
+		}
 	}
 </script>
 
 <main>
-	<h1>{questions[step]}</h1>
-	<p>{placeholders[step]}</p>
+	<h1>{userSteps[step].feedback}</h1>
+	<p>{userSteps[step].subtitle}</p>
 
 	<SpeechInput
-		placeholder={placeholders[step]}
-		onResult={handleResult}
+		transcript={userAnswer}
+		on:result={changeSteps}
 	/>
 
-	{#if userTranscript}
-		{#await api.search(userTranscript)}
-			<p>Op zoek naar boeken met "{userTranscript}"...</p>
+	{#if step === 'searchbooks'}
+		{#await api.search(userAnswer)}
+			<p>Op zoek naar boeken met "{userAnswer}"...</p>
 
 			{:then books}
-				<p>{books.total} boeken gevonden met "{userTranscript}"</p>
+				<p>{books.total} boeken gevonden met "{userAnswer}"</p>
 				{#each books.results as book}
 					<Book book={book} />
 				{/each}
 			{:catch}
-				<p>Kon geen boeken vinden met {userTranscript}</p>
+				<p>Kon geen boeken vinden met {userAnswer}</p>
 		{/await}
 	{/if}
 </main>
