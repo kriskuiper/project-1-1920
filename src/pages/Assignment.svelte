@@ -1,7 +1,8 @@
 <script>
-    
+    import { assignmentTitle, assignmentIntro } from '../store'
 </script>
 
 <main>
-    <h1>Werkstuk pagina yes</h1>
+    <h1>{$assignmentTitle}</h1>
+    <p>{$assignmentIntro}</p>
 </main>
