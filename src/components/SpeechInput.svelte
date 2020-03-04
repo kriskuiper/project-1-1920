@@ -63,7 +63,7 @@
             on:click={startRecognition}
             disabled={isListening}
         >
-            { isListening ? 'Luisteren...' : 'Neem op'}
+            { isListening ? 'Luisteren...' : 'Neem op' }
         </button>
     </div>
 </div>
