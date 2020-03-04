@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte'
-
     import recognition from '../../lib/recognition-instance'
+    import RecordButton from './RecordButton.svelte'
 
     export let transcript = 'Klik op "Neem op" en let me know'
 
@@ -40,12 +40,10 @@
             readonly
             value={transcript}
         >
-        <button
-            on:click={startRecognition}
-            disabled={isListening}
-        >
-            { isListening ? 'Luisteren...' : 'Neem op' }
-        </button>
+        <RecordButton
+            isListening={isListening}
+            on:record={startRecognition}
+        />
     </div>
 </div>
 
