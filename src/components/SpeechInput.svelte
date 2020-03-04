@@ -1,12 +1,14 @@
 <script>
+    import { createEventDispatcher } from 'svelte'
+
     import recognition from '../../lib/recognition-instance'
 
-    export let onResult
-    export let placeholder
+    export let transcript = 'Klik op "Neem op" en let me know'
 
     let hasResult = false
     let isListening = false
-    let userAnswer = ''
+
+    const dispatch = createEventDispatcher()
 
     const startRecognition = () => {
         isListening = true
@@ -18,27 +20,6 @@
         recognition.stop()
     }
 
-    const handleRecognitionResult = (transcript) => {
-        const containsWord = (value) => {
-            return transcript.includes(value)
-        }
-
-        /*
-            Very sloppy, this could be done a lot cleaner.
-            Works for v0.1 though
-        */
-        if (containsWord('ja')) {
-            userAnswer = 'ja'
-            onResult(userAnswer, '')
-        } else if (containsWord('nee')) {
-            userAnswer = 'nee'
-            onResult(userAnswer, '')
-        } else {
-            userAnswer = 'searchbooks'
-            onResult(userAnswer, transcript)
-        }
-    }
-
     recognition.onspeechend = () => {
         stopRecognition()
     }
@@ -46,18 +27,18 @@
     recognition.onresult = (event) => {
         const { transcript } = event.results[0][0]
         
-        handleRecognitionResult(transcript)
+        dispatch('result', transcript)
     }
 </script>
 
 <div>
-    <label for="speech-input">{placeholder}</label>
+    <label for="speech-input">Jouw antwoord: {transcript}</label>
     <div>
         <input
             type="text"
             id="speech-input"
-            value={userAnswer}
             readonly
+            value={transcript}
         >
         <button
             on:click={startRecognition}
