@@ -9,7 +9,9 @@
         <p>{format}</p>
     {/each}
 
-    <p>{book.isbn}</p>
+    {#if book.isbn}
+        <p>{book.isbn}</p>
+    {/if}
 </article>
 
 <style>
