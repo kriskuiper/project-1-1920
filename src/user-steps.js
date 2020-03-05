@@ -6,14 +6,26 @@ export default {
         nextSteps: ['ja', 'nee']
     },
     nee: {
-        feedback: 'Ugh, balen! Waar gaat je werkstuk over?',
-        subtitle: 'Zeg in één woord waar je werkstuk over gaat',
+        feedback: 'Ugh, balen! Je zou toch moeten beginnen... Hoe wil je je werkstuk noemen?',
+        subtitle: 'Noem een titel voor je werkstuk',
         possibleAnswers: ['all'],
-        nextSteps: ['searchbooks']
+        nextSteps: ['assignmenttitle']
     },
     ja: {
-        feedback: 'Awesome! Laten we snel beginnen. Waar gaat je werkstuk over?',
-        subtitle: 'Zeg in één woord waar je werkstuk over gaat',
+        feedback: 'Awesome! Laten we snel beginnen. Hoe wil je je werkstuk noemen?',
+        subtitle: 'Noem een titel voor je werkstuk',
+        possibleAnswers: ['all'],
+        nextSteps: ['assignmenttitle']
+    },
+    assignmenttitle: {
+        feedback: 'Dat is een leuke titel! Heb je ook nog een korte inleiding?',
+        subtitle: 'Beschrijf in het kort waar je werkstuk over gaat',
+        possibleAnswers: ['all'],
+        nextSteps: ['assignmentdescription']
+    },
+    assignmentdescription: {
+        feedback: 'Wauw! Welke boeken heb je nodig voor je werkstuk?',
+        subtitle: 'Geef één onderwerp waarover je boeken wilt zoeken',
         possibleAnswers: ['all'],
         nextSteps: ['searchbooks']
     },
