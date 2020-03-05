@@ -42,12 +42,12 @@
     }
 
     button:before {
-        background: #ED4C67;
+        background: lightgreen;
         animation-direction: reverse;
     }
 
     button:after {
-        background:#ED4C67;
+        background: magenta;
     }
 
     button.is-loading {

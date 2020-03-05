@@ -54,7 +54,7 @@
 
 <main>
 	<h1>{userSteps[step].feedback}</h1>
-	<p>{userSteps[step].subtitle}</p>
+	<p class="subtitle">{userSteps[step].subtitle}</p>
 
 	<SpeechInput transcript={userAnswer} on:result={changeSteps} />
 
@@ -64,9 +64,11 @@
 
 			{:then books}
 				<p>{books.total} boeken gevonden met "{userAnswer}"</p>
-				{#each books.results as book}
-					<Book book={book} />
-				{/each}
+				<div class="book-list">
+					{#each books.results as book}
+						<Book book={book} />
+					{/each}
+				</div>
 			{:catch}
 				<p>Kon geen boeken vinden met {userAnswer}</p>
 		{/await}
@@ -74,6 +76,14 @@
 </main>
 
 <style>
+	main {
+		text-align: center;
+	}
+
+	.subtitle {
+		margin-bottom: 4rem;
+	}
+
 	h1 { font-size: 1.85rem; }
 
 	@media (min-width: 330px) {
@@ -82,5 +92,11 @@
 
 	@media (min-width: 987px) {
 		h1 { font-size: 3rem }
+	}
+
+	.book-list {
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
 	}
 </style>

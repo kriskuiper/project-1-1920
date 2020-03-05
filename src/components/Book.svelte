@@ -71,9 +71,19 @@
 <style>
     article {
         cursor: pointer;
+        transition: .4s ease-in-out;
+        text-align: left;
+    }
+
+    img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        background-color: #eee;
     }
 
     .is-added {
-        border: 2px solid greenyellow;
+        background-color: #ED4C67;
+        color: white;
     }
 </style>

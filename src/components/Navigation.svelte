@@ -3,10 +3,14 @@
 </script>
 
 <nav>
-    <Link to="werkstuk">Werkstuk</Link>
-    <Link to="/">Home pagina</Link>
+    <Link to="werkstuk" class="button">Mijn werkstuk</Link>
+    <Link to="/" class="button">Opnieuw</Link>
 </nav>
 
 <style>
-
+    nav {
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem 0;
+    }
 </style>
