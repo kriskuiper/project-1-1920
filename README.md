@@ -6,6 +6,8 @@ Generate an assignment (werkstuk) by answering simple questions.
 
 ## Features
 - [Svelte](https://svelte.dev/)
+- [Svelte Routing](https://github.com/EmilTholin/svelte-routing)
+- [Svelte Stores](https://svelte.dev/tutorial/writable-stores)
 - [Web speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
 
 ## Getting started
