@@ -13,8 +13,8 @@ Generate an assignment (werkstuk) by answering simple questions.
 ## 🏎️ Getting started
 ### Prerequisites
 Before going any further, make sure you've installed the following, got this already? Skip to **Local development**.
-- [Node.js]()
-- [Yarn]() (or `npm` if you want to)
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/) (or `npm` if you want to)
 
 ### 🤓 Installation
 ```bash
