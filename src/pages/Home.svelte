@@ -1,4 +1,6 @@
 <script>
+	import { assignmentTitle, assignmentDescription } from '../store'
+
 	import api from '../../lib/api-instance'
 	import userSteps from '../user-steps'
 
@@ -37,6 +39,13 @@
 		if (isPossibleAnswer(userAnswer)) {
 			step = userSteps[step].nextSteps.find(nextStep => nextStep === userAnswer)
 				|| userSteps[step].nextSteps[0]
+
+			if (step === 'assignmenttitle') {
+				assignmentTitle.set(userAnswer)
+			} else if (step === 'assignmentdescription') {
+				assignmentDescription.set(userAnswer)
+			}
+
 		} else {
 			step = 'unknown'
 		}
