@@ -71,8 +71,20 @@
 <style>
     article {
         cursor: pointer;
-        transition: .4s ease-in-out;
         text-align: left;
+        position: relative;
+        padding-top: 5px;
+    }
+
+    article:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        background: lightgreen;
+        transition: width .4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     img {
@@ -82,8 +94,7 @@
         background-color: #eee;
     }
 
-    .is-added {
-        background-color: #ED4C67;
-        color: white;
+    article.is-added:before {
+        width: 100%;
     }
 </style>
