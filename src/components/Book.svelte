@@ -4,8 +4,11 @@
 
     export let book
 
+    let isListening = false
+
     const addToAssignment = () => {
         recognition.start()
+        isListening = true
 
         recognition.onresult = (event) => {
             const { transcript } = event.results[0][0]
@@ -15,11 +18,13 @@
             }
             
             recognition.stop()
+            isListening = false
         }
     }
 
     const removeFromAssignment = () => {
         recognition.start()
+        isListening = true
 
         recognition.onresult = (event) => {
             const { transcript } = event.results[0][0]
@@ -29,6 +34,7 @@
             }
             
             recognition.stop()
+            isListening = false
         }
     }
 
@@ -51,7 +57,8 @@
 
 <article
     on:click={isAdded ? removeFromAssignment : addToAssignment}
-    class={isAdded ? 'is-added' : null}
+    class:is-listening={isListening}
+    class:is-added={isAdded}
 >
     {#if book.images}
         <img src={book.images[0]} alt="">
@@ -96,5 +103,24 @@
 
     article.is-added:before {
         width: 100%;
+    }
+
+    article.is-listening {
+        opacity: 0.8;
+        animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(0.95);
+        }
+
+        100% {
+            transform: scale(1);
+        }
     }
 </style>
