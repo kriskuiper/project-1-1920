@@ -3,8 +3,8 @@
 </script>
 
 <nav>
-    <Link to="werkstuk" class="button">Mijn werkstuk</Link>
-    <Link to="/" class="button">Opnieuw</Link>
+    <Link to="werkstuk">Mijn werkstuk</Link>
+    <Link to="/">Opnieuw</Link>
 </nav>
 
 <style>
