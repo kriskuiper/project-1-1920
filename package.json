@@ -5,13 +5,14 @@
     "start": "sirv public",
     "build": "rollup --config",
     "dev": "rollup -c -w",
-    "now:deploy": "now",
+    "now:deploy": "run-s build now",
     "now:dev": "now dev --listen 5001"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "now": "^17.0.4",
+    "npm-run-all": "^4.1.5",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
